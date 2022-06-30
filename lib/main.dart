@@ -54,7 +54,8 @@ class _QuizPageState extends State<QuizPage> {
               // غيري الفلات بتتن بال TextButton
               textColor: Colors
                   .white, // https://www.youtube.com/watch?v=9YF8o1gRbyw   دا الفيديو راح يساعدك
-              color: Colors.green,
+              color:
+                  Colors.green, // ازا في اي صعوبه او شي مو مفهوم اتواصلي معايا
               child: Text(
                 'True',
                 style: TextStyle(
