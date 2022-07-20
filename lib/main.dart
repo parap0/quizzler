@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: deprecated_member_use
 
+import 'package:flutter/material.dart';
+import 'quwstion.dart';
 void main() => runApp(Quizzler());
 
 class Quizzler extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,7 +14,7 @@ class Quizzler extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: QuizPage(),
+             child: QuizPage(),
           ),
         ),
       ),
@@ -25,6 +28,15 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+ List <Icon>scorekeeper=[];
+ List<Question> questionBank =[
+Question(t:'You can lead a cow down stairs but not up stairs.',a: false ),
+Question(t:'Approximately one quarter of human bones are in the feet.',a: true ),
+Question(t:'A slug\'s blood is green.',a: true )
+
+ ];
+
+ int questionnumber =0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +49,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                questionBank[questionnumber].questiontext,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -52,8 +64,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
               // غيري الفلات بتتن بال TextButton
-              textColor: Colors
-                  .white, // https://www.youtube.com/watch?v=9YF8o1gRbyw   دا الفيديو راح يساعدك
+              textColor: Colors.white, // https://www.youtube.com/watch?v=9YF8o1gRbyw   دا الفيديو راح يساعدك
               color:
                   Colors.green, // ازا في اي صعوبه او شي مو مفهوم اتواصلي معايا
               child: Text(
@@ -64,6 +75,16 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctanswer = questionBank[questionnumber].questionanswer;
+                if(correctanswer==true)
+                print("user got it right!");
+                else
+                print("user got it wrong");
+                setState(() {
+                  questionnumber++;
+                });
+                
+                print(questionnumber);
                 //The user picked true.
               },
             ),
@@ -82,11 +103,24 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+                bool correctanswer = questionBank[questionnumber].questionanswer;
+                if(correctanswer==false)
+                print("user got it right!");
+                else
+                print("user got it wrong");
+               setState(() {
+                  questionnumber++;
+                });
+                print(questionnumber);
                 //The user picked false.
               },
             ),
           ),
         ),
+        Row(
+          children:scorekeeper,
+          
+        )
         //TODO: Add a Row here as your score keeper
       ],
     );
