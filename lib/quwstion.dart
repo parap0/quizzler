@@ -1,10 +1,9 @@
-class Question{
-String questiontext;
-bool questionanswer;
+class Question {
+  String? questiontext;
+  bool? questionanswer;
 
-Question({ String t, bool a}) {
- questiontext = t;
- questionanswer = a ;
-
-}
+  Question({String? t, bool? a}) {
+    questiontext = t;
+    questionanswer = a;
+  }
 }
